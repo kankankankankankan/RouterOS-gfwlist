@@ -1,5 +1,5 @@
 # GFWList for RouterOS DNS with EVERYTHING included
-# Last Modified: 2022-12-08 02:01:18
+# Last Modified: 2022-12-08 03:01:19
 #
 /ip/dns/static/remove [find type=FWD]
 /ip dns static
