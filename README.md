@@ -1,4 +1,4 @@
-# GFWList for RouterOS DNS with EVERYTHING included Update daily 00:00:00
+# GFWList for RouterOS DNS with EVERYTHING included Update daily 23:55:00
 
 Import RouterOS scheduled tasks  
 Starts 00:00 every day
