@@ -14,7 +14,7 @@ If you don't want a domain name to go through your VPN gateway proxy, you can de
 /ip/dns/static/remove [find name=ddns.net]
 ```
 
-If you want a domain name to go through your gateway proxy, you can add it, such as name=sm.ms.
+If you want a domain name to go through your gateway proxy, you can add it, such as sm.ms.
 ```
 /ip/dns/static/add type=FWD match-subdomain=yes address-list=gfwlist forward-to=1.1.1.1 name=sm.ms
 ```
