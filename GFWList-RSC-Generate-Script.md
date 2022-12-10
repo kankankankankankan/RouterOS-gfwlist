@@ -63,8 +63,8 @@ Add "/ip dns static" -->> gfwlist.rsc
 echo "/ip dns static" >> gfwlist.rsc
 ```
 
-Add "add type=FWD match-subdomain=yes address-list=gfwlist forward-to=1.1.1.1 name=" -->> gfwlist.txt -->> gfwlist.rsc
+Add "add type=FWD match-subdomain=yes address-list=VPN forward-to=1.1.1.1 name=" -->> gfwlist.txt -->> gfwlist.rsc
 ```
-sed "s/^/add type=FWD match-subdomain=yes address-list=gfwlist forward-to=1.1.1.1 name=&/g" gfwlist.txt >> gfwlist.rsc
+sed "s/^/add type=FWD match-subdomain=yes address-list=VPN forward-to=1.1.1.1 name=&/g" gfwlist.txt >> gfwlist.rsc
 ```
 

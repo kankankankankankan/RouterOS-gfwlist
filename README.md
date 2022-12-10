@@ -16,7 +16,7 @@ If you don't want a domain name to go through your VPN gateway proxy, you can de
 
 If you want a domain name to go through your gateway proxy, you can add it, such as sm.ms.
 ```
-/ip/dns/static/add type=FWD match-subdomain=yes address-list=gfwlist forward-to=1.1.1.1 name=sm.ms
+/ip/dns/static/add type=FWD match-subdomain=yes address-list=VPN forward-to=1.1.1.1 name=sm.ms
 ```
 
 Clear RouterOS IPV4 IPV6 firewall gfwlist dynamic address-list
@@ -35,28 +35,28 @@ Clear RouterOS DNS resolution cache
 IPV4 IPV6 Mark routing
 ```
 /ip firewall mangle
-add action=mark-routing chain=prerouting dst-address-list=gfwlist new-routing-mark=gfwlist passthrough=yes
+add action=mark-routing chain=prerouting dst-address-list=VPN new-routing-mark=VPN passthrough=yes
 
 
 /ipv6 firewall mangle
-add action=mark-routing chain=prerouting dst-address-list=gfwlist new-routing-mark=gfwlist passthrough=yes
+add action=mark-routing chain=prerouting dst-address-list=VPN new-routing-mark=VPN passthrough=yes
 ```
 
 Change TTL time 1 day
 ```
 /ip/firewall/mangle/
-add chain=prerouting action=add-dst-to-address-list connection-state=new dst-address-list=gfwlist address-list=gfwlist address-list-timeout=1d
+add chain=prerouting action=add-dst-to-address-list connection-state=new dst-address-list=VPN address-list=VPN address-list-timeout=1d
 
 /ipv6/firewall/mangle/
-add chain=prerouting action=add-dst-to-address-list connection-state=new dst-address-list=gfwlist address-list=gfwlist address-list-timeout=1d
+add chain=prerouting action=add-dst-to-address-list connection-state=new dst-address-list=VPN address-list=VPN address-list-timeout=1d
 ```
 
-Add route (PPPOE distance=255 gfwlist distance=10 gfwlist first)
+Add route (PPPOE distance=255 VPN distance=100)
 ```
 /ip route
-add comment=gfwlist routing-table=gfwlist distance=10 dst-address=0.0.0.0/0 gateway=Your_VPN_GW
+add comment=VPN routing-table=VPN distance=100 dst-address=0.0.0.0/0 gateway=Your_VPN_GW
 
 /ipv6 route
-add comment=gfwlist routing-table=gfwlist distance=10 dst-address=::/0 gateway=Your_VPN_GW
+add comment=VPN routing-table=VPN distance=100 dst-address=::/0 gateway=Your_VPN_GW
 ```
 
