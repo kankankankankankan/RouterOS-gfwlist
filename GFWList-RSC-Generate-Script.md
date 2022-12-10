@@ -24,25 +24,38 @@ sh gfwlist2dnsmasq.sh -l -o /root/gfwlist/gfwlist.txt
 # GFWList for RouterOS DNS with EVERYTHING included
 
 ```
-# Open the /root/gfwlist/ folder
+Open the /root/gfwlist/ folder
+```
 cd /root/gfwlist/
+```
 
-# Add "# GFWList for RouterOS DNS with EVERYTHING included" to gfwlist.rsc
+Add GFWList for RouterOS DNS with EVERYTHING included --> gfwlist.rsc
+```
 echo "# GFWList for RouterOS DNS with EVERYTHING included" > gfwlist.rsc
+```
 
-# Add "# Last Modified: Current date time" to gfwlist.rsc
+Add Current date time -->> gfwlist.rsc
+```
 echo "# Last Modified: $(date "+%Y-%m-%d %H:%M:%S")" >> gfwlist.rsc
+```
 
-# Add "# " to gfwlist.rsc
+Add # -->> gfwlist.rsc
+```
 echo "#">> gfwlist.rsc
+```
 
-# Add "/ip/dns/static/remove [find type=FWD]" to gfwlist.rsc
+Add /ip/dns/static/remove [find type=FWD] -->> gfwlist.rsc
+```
 echo "/ip/dns/static/remove [find type=FWD]" >> gfwlist.rsc
+```
 
-# # Add "/ip dns static" to gfwlist.rsc
+# Add /ip dns static -->> gfwlist.rsc
+```
 echo "/ip dns static" >> gfwlist.rsc
+```
 
-# Add "FWD match-subdomain=yes address-list=VPN forward-to=1.1.1.1 name=" at the beginning of the gfwlist.txt line and add it to gfwlist.rsc
-sed "s/^/add type=FWD match-subdomain=yes address-list=VPN forward-to=1.1.1.1 name=&/g" gfwlist.txt >> gfwlist.rsc
+Add add type=FWD match-subdomain=yes address-list=gfwlist forward-to=1.1.1.1 name= -->> gfwlist.txt -->> gfwlist.rsc
+```
+sed "s/^/add type=FWD match-subdomain=yes address-list=gfwlist forward-to=1.1.1.1 name=&/g" gfwlist.txt >> gfwlist.rsc
 ```
 
