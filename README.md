@@ -19,6 +19,12 @@ If you want a domain name to go through your gateway proxy, you can add it, such
 /ip/dns/static/add type=FWD match-subdomain=yes address-list=gfwlist forward-to=1.1.1.1 name=sm.ms
 ```
 
+Clear RouterOS IPV4 IPV6 firewall gfwlist dynamic address-list
+```
+/ip/firewall/address-list/remove [find dynamic]
+/ipv6/firewall/address-list/remove [find dynamic]
+```
+
 Clear RouterOS DNS resolution cache
 ```
 /ip/dns/cache/flush
