@@ -6,3 +6,32 @@ Starts 00:00 every day
 /system scheduler
 add name=AutoUpdateGFWList start-date=jan/01/2022 start-time=00:00:00 interval=1d on-event="/tool fetch url=\"https://raw.githubusercontent.com/AutoUpdateDaily/gfwlist/main/gfwlist.rsc\" mode=https\r\nimport gfwlist.rsc"
 ```
+
+IPV4 IPV6 Mark routing
+```
+/ip firewall mangle
+add action=mark-routing chain=prerouting dst-address-list=gfwlist new-routing-mark=gfwlist passthrough=yes
+
+
+/ipv6 firewall mangle
+add action=mark-routing chain=prerouting dst-address-list=gfwlist new-routing-mark=gfwlist passthrough=yes
+```
+
+Change TTL time 1 day
+```
+/ip/firewall/mangle/
+add chain=prerouting action=add-dst-to-address-list connection-state=new dst-address-list=gfwlist address-list=gfwlist address-list-timeout=1d
+
+/ipv6/firewall/mangle/
+add chain=prerouting action=add-dst-to-address-list connection-state=new dst-address-list=gfwlist address-list=gfwlist address-list-timeout=1d
+```
+
+Add route (PPPOE distance=255 gfwlist distance=10 gfwlist first)
+```
+/ip route
+add comment=gfwlist routing-table=gfwlist distance=10 dst-address=0.0.0.0/0 gateway=Your_VPN_GW
+
+/ipv6 route
+add comment=gfwlist routing-table=gfwlist distance=10 dst-address=::/0 gateway=Your_VPN_GW
+```
+
