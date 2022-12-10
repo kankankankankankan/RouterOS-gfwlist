@@ -33,7 +33,6 @@ sh gfwlist2dnsmasq.sh -l -o /root/gfwlist/gfwlist.txt
 
 # GFWList for RouterOS DNS with EVERYTHING included
 
-```
 Open the /root/gfwlist/ folder
 ```
 cd /root/gfwlist/
