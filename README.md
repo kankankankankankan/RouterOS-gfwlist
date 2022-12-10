@@ -7,6 +7,23 @@ Starts 00:00 every day
 add name=AutoUpdateGFWList start-date=jan/01/2022 start-time=00:00:00 interval=1d on-event="/tool fetch url=\"https://raw.githubusercontent.com/AutoUpdateDaily/gfwlist/main/gfwlist.rsc\" mode=https\r\nimport gfwlist.rsc"
 ```
 
+# some customization options
+
+If you don't want a domain name to go through your VPN gateway proxy, you can delete it, such as ddns.net.
+```
+/ip/dns/static/remove [find name=ddns.net]
+```
+
+If you don't want a domain name to go through your VPN gateway proxy, you can delete it, such as ddns.net.
+```
+/ip/dns/static/add type=FWD match-subdomain=yes address-list=gfwlist forward-to=1.1.1.1 name=sm.ms
+```
+
+Clear RouterOS DNS resolution cache
+```
+/ip/dns/cache/flush
+```
+
 # RouterOS Recommended configuration
 
 IPV4 IPV6 Mark routing
