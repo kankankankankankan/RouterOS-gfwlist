@@ -5,12 +5,12 @@ OpenWrt Install the wget coreutils-base64 curl package
 opkg update
 opkg install wget coreutils-base64 curl
 ```
-# Create /root/gfwlist/ folder
+Create /root/gfwlist/ folder
 ```
 mkdir /root/gfwlist/
 ```
 
-# Open the /root/gfwlist/ folder
+Open the /root/gfwlist/ folder
 ```
 cd /root/gfwlist/
 ```
